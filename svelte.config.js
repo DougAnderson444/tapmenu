@@ -27,7 +27,11 @@ const config = {
 			pages: 'docs',
 			assets: 'docs',
 			fallback: 'index.html'
-		})
+		}),
+		paths: {
+			// change below to your repo name
+			base: process.env.NODE_ENV === 'development' ? '' : '/tapmenu'
+		}
 	}
 };
 
