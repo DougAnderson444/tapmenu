@@ -27,7 +27,7 @@
 					element: menu
 				}),
 				Link.configure({
-					linkOnPaste: true,
+					autolink: true,
 					protocols: ['http', 'https', 'mailto']
 				}),
 				Image.configure({
