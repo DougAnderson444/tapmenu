@@ -13,14 +13,35 @@ Uses [Tiptap](https://tiptap.dev/), [Tailwindcss](https://tailwindcss.com/docs/g
 
 ## Use
 
+### Svelte
+
 As shown in the `./src/routes/+page.svelte` demo code:
 
 ```svelte
 <script>
-	import Tiptap from '$lib/Tiptap.svelte';
+	import { TapMenu } from '@douganderson444/tapmenu';
 </script>
 
-<Tiptap>
+<TapMenu>
 	<p>Hello Entry World! 🌍️</p>
-</Tiptap>
+</TapMenu>
+```
+
+### Vanilla JS
+
+```js
+import TapMenu from '@douganderson444/tapmenu/esm/TapMenu.svelte.js';
+
+new TapMenu({
+	target: document.getElementById('target'),
+	props: {
+		content: '<p>Hello World 🌍️<p>'
+	}
+});
+```
+
+and
+
+```html
+<div id="target"><div></div></div>
 ```
