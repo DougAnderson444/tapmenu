@@ -1,7 +1,7 @@
 <script>
 	// @ts-nocheck
 
-	import { onMount, onDestroy, createEventDispatcher } from 'svelte';
+	import { onMount, createEventDispatcher } from 'svelte';
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import BubbleMenu from '@tiptap/extension-bubble-menu';
@@ -11,13 +11,13 @@
 	import TextStyle from '@tiptap/extension-text-style';
 	import Color from '@tiptap/extension-color';
 
+	export let content = '';
+
 	let editor;
-	let content;
-
-	const dispatch = createEventDispatcher();
-
 	let element;
 	let menu;
+
+	const dispatch = createEventDispatcher();
 
 	onMount(() => {
 		editor = new Editor({
@@ -54,12 +54,10 @@
 
 		dispatch('editor', editor);
 		dispatch('update', editor?.getHTML() || content);
-	});
 
-	onDestroy(() => {
-		if (editor) {
-			editor.destroy();
-		}
+		return () => {
+			if (editor) editor.destroy();
+		};
 	});
 </script>
 
