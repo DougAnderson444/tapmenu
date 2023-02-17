@@ -7,6 +7,10 @@ Uses [Tiptap](https://tiptap.dev/), [Tailwindcss](https://tailwindcss.com/docs/g
 
 ![Demo](./images/readme.png)
 
+## Demo
+
+[View Demo](https://douganderson444.github.io/tapmenu/)
+
 ## Use
 
 As shown in the `./src/routes/+page.svelte` demo code:
