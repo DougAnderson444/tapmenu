@@ -70,23 +70,29 @@
 			editor.chain().focus().setImage({ src: url }).run();
 		}
 	}
+	const toggleTextSize = () => editor.chain().focus().toggleHeading({ level: 1 }).run();
+	const setColor = (event) => editor.chain().focus().setColor(event.target.value).run();
 </script>
 
 <div class="bg-neutral-800 text-white rounded-md shadow-md px-4 py-2">
 	<button
 		class="text-xl"
-		on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+		on:click={toggleTextSize}
 		class:active={editor.isActive('heading', { level: 1 })}
 	>
 		<TextSize />
 	</button>
 	<button on:click={toggleBold} class="text-lg font-semibold p-2 leading-tight">B</button>
-	<button on:click={setLink} class="p-2"><LinkIcon /></button>
-	<button on:click={addImage} class="p-2"><ImageIcon /></button>
+	<button on:click={setLink} class="p-2">
+		<LinkIcon />
+	</button>
+	<button on:click={addImage} class="p-2">
+		<ImageIcon />
+	</button>
 	<input
 		type="color"
 		class="w-7"
-		on:input={(event) => editor.chain().focus().setColor(event.target.value).run()}
+		on:input={setColor}
 		value={editor.getAttributes('textStyle').color}
 	/>
 </div>
