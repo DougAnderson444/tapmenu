@@ -6,9 +6,9 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const packageDir = path.resolve(__dirname, './package');
+const packageDir = path.resolve(__dirname, './dist');
 const files = fs.readdirSync(packageDir);
-const svelteFiles = globbySync('./package/**/*.svelte');
+const svelteFiles = globbySync('./dist/**/*.svelte');
 
 svelteFiles.forEach((file) => {
 	// remove all unused css in <style> tags from this svelte file
