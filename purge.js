@@ -71,6 +71,7 @@ svelteFiles.forEach((file) => {
 		? mediaStatements.map((media) => {
 				// get the part of the media statement after the backslash "\:" and before the second opening curly brace "{"
 				const matches = media.match(/\\:([a-zA-Z0-9_-]+)[^]+?{/i);
+				if (!matches?.length) return '';
 				const className = matches[1];
 				const isUsed = classStatements4.some((c) => c.includes(className));
 				return isUsed ? media.replace(/[\r\t\s]+/g, '') : '';

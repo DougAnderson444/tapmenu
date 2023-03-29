@@ -1,8 +1,6 @@
 {
 	"name": "@douganderson444/tapmenu",
-	"version": "0.0.2",
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
+	"version": "0.0.3",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -17,6 +15,9 @@
 		"lint": "prettier --plugin-search-dir . --check .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"files": [
+		"dist"
+	],
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -25,9 +26,6 @@
 		},
 		"./esm": {
 			"TapMenu": "./dist/esm/TapMenu.svelte.js"
-		},
-		"./dev": {
-			"svelte": "./src/lib/index.js"
 		}
 	},
 	"peerDependencies": {
@@ -57,6 +55,7 @@
 		"vite": "^4.0.0"
 	},
 	"dependencies": {
+		"@excalidraw/excalidraw": "^0.14.2",
 		"@iconify/icons-ic": "^1.2.13",
 		"@iconify/icons-mdi": "^1.2.41",
 		"@iconify/icons-zondicons": "^1.2.3",
@@ -73,13 +72,16 @@
 		"@tiptap/extension-text": "^2.0.0-beta.218",
 		"@tiptap/extension-text-style": "^2.0.0-beta.217",
 		"@tiptap/pm": "^2.0.0-beta.217",
+		"@tiptap/react": "^2.0.0",
 		"@tiptap/starter-kit": "^2.0.0-beta.217",
 		"@tiptap/suggestion": "^2.0.0-beta.220",
 		"iconify-icon": "^1.0.5",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
 		"svelte": "^3.54.0",
+		"svelte-preprocess-react": "^0.14.1",
 		"svelte-tiptap": "^0.7.0"
 	},
 	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
 	"type": "module"
 }
