@@ -1,13 +1,16 @@
 {
 	"name": "@douganderson444/tapmenu",
-	"version": "0.0.1",
+	"version": "0.0.2",
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
 		"build:components": "node buildComponents.mjs",
 		"preview": "vite preview",
-		"package": "svelte-kit sync && svelte-package && npm run build:components && publint && npm run purge:package",
+		"package": "svelte-kit sync && svelte-package && npm run purge:package && npm run build:components && publint",
 		"purge:package": "node purge.js",
+		"publish:npm": "npm publish --access public",
 		"prepublishOnly": "npm run package && publint",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -22,6 +25,9 @@
 		},
 		"./esm": {
 			"TapMenu": "./dist/esm/TapMenu.svelte.js"
+		},
+		"./dev": {
+			"svelte": "./src/lib/index.js"
 		}
 	},
 	"peerDependencies": {
@@ -58,13 +64,20 @@
 		"@tiptap/core": "^2.0.0-beta.217",
 		"@tiptap/extension-bubble-menu": "^2.0.0-beta.217",
 		"@tiptap/extension-color": "^2.0.0-beta.217",
+		"@tiptap/extension-document": "^2.0.0-beta.218",
 		"@tiptap/extension-image": "^2.0.0-beta.217",
 		"@tiptap/extension-link": "^2.0.0-beta.217",
+		"@tiptap/extension-paragraph": "^2.0.0-beta.218",
+		"@tiptap/extension-task-item": "^2.0.0-beta.218",
+		"@tiptap/extension-task-list": "^2.0.0-beta.218",
+		"@tiptap/extension-text": "^2.0.0-beta.218",
 		"@tiptap/extension-text-style": "^2.0.0-beta.217",
 		"@tiptap/pm": "^2.0.0-beta.217",
 		"@tiptap/starter-kit": "^2.0.0-beta.217",
+		"@tiptap/suggestion": "^2.0.0-beta.220",
 		"iconify-icon": "^1.0.5",
-		"svelte": "^3.54.0"
+		"svelte": "^3.54.0",
+		"svelte-tiptap": "^0.7.0"
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
