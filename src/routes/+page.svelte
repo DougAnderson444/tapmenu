@@ -1,5 +1,6 @@
 <script>
 	import { TapMenu } from '$lib';
+	import demo from './_demo.html?raw';
 	let content = '';
 </script>
 
@@ -8,10 +9,11 @@
 		<h1>TapMenu - Svelte/Tailwind Context Menu</h1>
 		<div class="bg-neutral-200 p-2">
 			<TapMenu on:update={(e) => (content = e.detail)}>
-				<p>Hello World! 🌍️</p>
+				{@html demo}
+				<!-- <p>Hello World! 🌍️</p>
 				<p>
 					<span class="bg-yellow-300"> Highlight/Select</span> to bring up bubble menu.
-				</p>
+				</p>-->
 			</TapMenu>
 		</div>
 	</div>
@@ -23,6 +25,7 @@
 </div>
 
 <style lang="postcss">
+	/* Line Wrap the pre tag elements  */
 	pre {
 		white-space: pre-wrap; /* Since CSS 2.1 */
 		white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
