@@ -4,6 +4,7 @@
 	import { onMount, createEventDispatcher } from 'svelte';
 	import Menu from './BubbleMenu.svelte';
 	import SlashCommand from './commands/slash';
+	import { Excalidraw } from './extensions/index.js';
 
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
@@ -29,6 +30,11 @@
 	onMount(() => {
 		editor = new Editor({
 			element: element,
+			editorProps: {
+				attributes: {
+					class: 'focus:outline-none'
+				}
+			},
 			extensions: [
 				Document.extend({
 					content: 'taskList'
@@ -58,7 +64,8 @@
 				}),
 				StarterKit,
 				TextStyle,
-				SlashCommand
+				SlashCommand,
+				Excalidraw
 			],
 			content,
 			onTransaction: () => {
