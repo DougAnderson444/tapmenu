@@ -2,16 +2,23 @@
 	// @ts-nocheck
 
 	import { onMount, createEventDispatcher } from 'svelte';
+	import Menu from './BubbleMenu.svelte';
+	import SlashCommand from './commands/slash';
+
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import BubbleMenu from '@tiptap/extension-bubble-menu';
 	import Link from '@tiptap/extension-link';
-	import Menu from './BubbleMenu.svelte';
 	import Image from '@tiptap/extension-image';
 	import TextStyle from '@tiptap/extension-text-style';
 	import Color from '@tiptap/extension-color';
+	import Document from '@tiptap/extension-document';
+	import Paragraph from '@tiptap/extension-paragraph';
+	import TaskItem from '@tiptap/extension-task-item';
+	import TaskList from '@tiptap/extension-task-list';
+	import Text from '@tiptap/extension-text';
 
-	export let content = '';
+	export let content;
 
 	let editor;
 	let element;
@@ -23,6 +30,18 @@
 		editor = new Editor({
 			element: element,
 			extensions: [
+				Document.extend({
+					content: 'taskList'
+				}),
+				Paragraph,
+				Text,
+				TaskList,
+				TaskItem.configure({
+					nested: true
+				}),
+				// TaskItem.extend({
+				// 	content: 'inline*'
+				// }),
 				BubbleMenu.configure({
 					element: menu
 				}),
@@ -38,7 +57,8 @@
 					types: ['textStyle']
 				}),
 				StarterKit,
-				TextStyle
+				TextStyle,
+				SlashCommand
 			],
 			content,
 			onTransaction: () => {
@@ -48,7 +68,6 @@
 		});
 
 		editor.on('update', ({ editor }) => {
-			// The content has changed.
 			dispatch('update', editor?.getHTML() || content);
 		});
 
@@ -69,7 +88,7 @@
 </div>
 
 <!-- Get slot contents: Add a hidden span or div to bind the slot text: -->
-<span contenteditable="true" bind:innerHTML={content} style="visibility: hidden;">
+<span contenteditable="true" bind:innerHTML={content} style="visibility: hidden; display: none;">
 	<slot>
 		<!-- Default slot value -->
 		<p>Select to Edit</p>
