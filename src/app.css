@@ -7,7 +7,7 @@
 		outline: 0px solid transparent;
 	}
 	a {
-		@apply underline text-blue-500 cursor-pointer;
+		@apply underline text-blue-500 bg-blue-50 rounded px-1 pb-1 cursor-pointer;
 	}
 
 	h1 {
@@ -16,5 +16,19 @@
 
 	h2 {
 		@apply text-xl my-2;
+	}
+
+	h3 {
+		@apply text-lg my-2;
+	}
+	li {
+		@apply flex;
+	}
+	label {
+		@apply mr-1;
+	}
+
+	img {
+		@apply border-[20px] border-white p-2 shadow-lg;
 	}
 }
