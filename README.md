@@ -1,9 +1,10 @@
 # TapMenu - Tailwind Styled TipTap Menu
 
-Uses [Tiptap](https://tiptap.dev/), [Tailwindcss](https://tailwindcss.com/docs/guides/sveltekit) with [Iconify](https://www.npmjs.com/package/iconify-icon) to make a contet menu.
+Uses [Tiptap](https://tiptap.dev/), [Tailwindcss](https://tailwindcss.com/docs/guides/sveltekit) with [Iconify SVGs](https://iconify.design/) to make a contet menu.
 
 - [x] [Menu](https://tiptap.dev/)
 - [x] [Icons](https://www.npmjs.com/package/iconify-icon)
+- [x] Slash Command for inserting while inline
 
 ![Demo](./images/readme.png)
 
@@ -22,21 +23,27 @@ As shown in the `./src/routes/+page.svelte` demo code:
 	import { TapMenu } from '@douganderson444/tapmenu';
 </script>
 
-<TapMenu>
+<TapMenu on:change={(e) => console.log('Content is now: ', e.detail)}>
 	<p>Hello Entry World! 🌍️</p>
 </TapMenu>
 ```
 
 ### Vanilla JS
 
+Pass in the html `content` as a prop to enable the Menu to pop up when displaying it. Any changes will be propoated back on the `change` event for you to save/update, whatever
+
 ```js
 import TapMenu from '@douganderson444/tapmenu/esm/TapMenu.svelte.js';
 
-new TapMenu({
+const contentedMenu = new TapMenu({
 	target: document.getElementById('target'),
 	props: {
 		content: '<p>Hello World 🌍️<p>'
 	}
+});
+
+contentedMenu.$on('change', (e) => {
+	console.log('Content is now: ', e.detail);
 });
 ```
 
