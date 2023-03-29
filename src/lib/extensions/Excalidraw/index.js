@@ -3,6 +3,8 @@ import { SvelteNodeViewRenderer } from 'svelte-tiptap';
 
 import CounterComponent from './Component.svelte';
 
+export const excalidrawTag = 'svelte-excalidraw-component';
+
 export const Excalidraw = Node.create({
 	name: 'svelteExcalidrawComponent',
 	group: 'block',
@@ -12,18 +14,18 @@ export const Excalidraw = Node.create({
 
 	addAttributes() {
 		return {
-			count: {
-				default: 0
+			draw: {
+				default: ''
 			}
 		};
 	},
 
 	parseHTML() {
-		return [{ tag: 'svelte-counter-component' }];
+		return [{ tag: excalidrawTag }];
 	},
 
 	renderHTML({ HTMLAttributes }) {
-		return ['svelte-counter-component', mergeAttributes(HTMLAttributes)];
+		return [excalidrawTag, mergeAttributes(HTMLAttributes)];
 	},
 
 	addNodeView() {

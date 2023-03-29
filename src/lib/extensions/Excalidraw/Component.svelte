@@ -11,21 +11,27 @@
 	export let updateAttributes: NodeViewProps['updateAttributes'];
 	export let selected: NodeViewProps['selected'] = false;
 
-	const e = React.createElement;
 	let container: HTMLDivElement;
 
-	onMount(function () {
-		const root = createRoot(container);
-		root.render(e(Excalidraw));
-	});
+	function onChange(ex) {
+		const encoded = ex?.length ? btoa(JSON.stringify(ex)) : '';
+		updateAttributes({ draw: encoded });
+	}
 
-	const handleClick = () => {
-		updateAttributes({ count: node.attrs.count + 1 });
-	};
+	onMount(function () {
+		const base64 = node.attrs.draw;
+		let str: string = base64 ? atob(base64) : null;
+
+		const initialData = str ? { elements: JSON.parse(str) } : {};
+		const reactProps = { onChange, initialData };
+
+		const root = createRoot(container);
+		root.render(React.createElement(Excalidraw, reactProps));
+	});
 </script>
 
-<NodeViewWrapper class={'svelte-component ' + selected}>
+<NodeViewWrapper class={'svelte-component ' + selected} style={null}>
 	<span class="label">Excalidraw Component</span>
 
-	<div bind:this={container} style:width="500px" style:height="500px" />
+	<div bind:this={container} style="width: 500px; height: 600px;" />
 </NodeViewWrapper>
