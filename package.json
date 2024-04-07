@@ -1,5 +1,9 @@
 {
 	"name": "@douganderson444/tapmenu",
+  "git": "https://github.com/DougAnderson444/tapmenu.git",
+  "author": "Doug Anderson",
+  "homepage": "https://github.com/DougAnderson444/tapmenu",
+  "license": "MIT",
 	"version": "0.0.3",
 	"scripts": {
 		"dev": "vite dev",
