@@ -28,7 +28,7 @@ As shown in the `./src/routes/+page.svelte` demo code:
 </TapMenu>
 ```
 
-### Vanilla JS
+### Vanilla JS [Deprecated after v0.0.4]
 
 Pass in the html `content` as a prop to enable the Menu to pop up when displaying it. Any changes will be propoated back on the `change` event for you to save/update, whatever
 
