@@ -1,5 +1,5 @@
 import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import preprocess from 'svelte-preprocess';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -19,10 +19,12 @@ const config = {
 						// use @import when building packages for distribution
 						configFilePath: path.resolve(__dirname, './postcss.config.js'),
 						prependData: `@import '${path.resolve('./src/app.css')}';`
-				  }
+					}
 	}),
-
 	kit: {
+		alias: {
+			'@douganderson444/tapmenu': './src/lib'
+		},
 		adapter: adapter({
 			pages: 'docs',
 			assets: 'docs',
