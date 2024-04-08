@@ -4,7 +4,6 @@
 	import { onMount, createEventDispatcher } from 'svelte';
 	import Menu from './BubbleMenu.svelte';
 	import SlashCommand from './commands/slash';
-	import { Excalidraw } from './extensions/index.js';
 
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
@@ -27,7 +26,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	onMount(() => {
+	onMount(async () => {
 		editor = new Editor({
 			element: element,
 			editorProps: {
@@ -62,10 +61,9 @@
 				Color.configure({
 					types: ['textStyle']
 				}),
-				StarterKit,
+				// StarterKit,
 				TextStyle,
-				SlashCommand,
-				Excalidraw
+				SlashCommand
 			],
 			content,
 			onTransaction: () => {

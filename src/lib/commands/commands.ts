@@ -1,6 +1,5 @@
 import { createKeysLocalStorageLRUCache } from './helpers/lru-cache';
 import { uploadImage } from '$lib/utils';
-import { Excalidraw, excalidrawTag } from '$lib/extensions/Excalidraw/index.js';
 
 export const insertMenuLRUCache = createKeysLocalStorageLRUCache({
 	storageKey: 'TIPTAP_INSERT_MENU',
@@ -18,18 +17,6 @@ export const QUICK_INSERT_COMMANDS = [
 		title: 'bold',
 		command: ({ editor, range }) => {
 			editor.chain().focus().deleteRange(range).setMark('bold').run();
-		}
-	},
-	{
-		title: 'draw',
-		command: ({ editor, range }) => {
-			// editor.chain().focus().deleteRange(range).setNode(Excalidraw).run(); // why doesnt this work?!
-			editor
-				.chain()
-				.focus()
-				.deleteRange(range)
-				.insertContent(`<${excalidrawTag}></${excalidrawTag}>`)
-				.run();
 		}
 	},
 	{
