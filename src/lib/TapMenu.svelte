@@ -61,7 +61,7 @@
 				Color.configure({
 					types: ['textStyle']
 				}),
-				// StarterKit,
+				StarterKit,
 				TextStyle,
 				SlashCommand
 			],
