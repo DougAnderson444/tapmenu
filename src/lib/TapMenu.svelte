@@ -35,18 +35,10 @@
 				}
 			},
 			extensions: [
-				Document.extend({
-					content: 'taskList'
-				}),
-				Paragraph,
-				Text,
 				TaskList,
 				TaskItem.configure({
 					nested: true
 				}),
-				// TaskItem.extend({
-				// 	content: 'inline*'
-				// }),
 				BubbleMenu.configure({
 					element: menu
 				}),
@@ -64,6 +56,15 @@
 				StarterKit,
 				TextStyle,
 				SlashCommand
+				// Already covered by StarterKit:
+				// Document.extend({
+				// 	content: 'taskList'
+				// }),
+				// Paragraph,
+				// Text,
+				// TaskItem.extend({
+				// 	content: 'inline*'
+				// }),
 			],
 			content,
 			onTransaction: () => {
@@ -103,5 +104,8 @@
 <style lang="postcss">
 	button {
 		@apply mx-1 rounded;
+	}
+	a {
+		@apply cursor-pointer;
 	}
 </style>
