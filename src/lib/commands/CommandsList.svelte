@@ -2,8 +2,6 @@
 	export let items: any[];
 	export let command: Function;
 
-	console.log({ items }, { command });
-
 	let selectedIndex = -1;
 	let buttons = [];
 	$: if ((buttons?.length || selectedIndex > 0) && buttons[selectedIndex])

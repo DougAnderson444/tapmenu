@@ -11,7 +11,6 @@ export default {
 		const restCommands = QUICK_INSERT_COMMANDS.filter(
 			(command) => !recentUsed.includes(command.title)
 		).slice(0, 10);
-		console.log({ recentUsed }, { restCommands }, transformToCommands(recentUsed));
 
 		return [...transformToCommands(QUICK_INSERT_COMMANDS, recentUsed), ...restCommands].filter(
 			(command) => command.title.toLowerCase().startsWith(query.toLowerCase())
