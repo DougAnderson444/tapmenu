@@ -21,7 +21,17 @@
 	h3 {
 		@apply text-lg my-2;
 	}
-	li {
+
+	ol {
+		@apply list-decimal list-inside block;
+	}
+
+	ol li p {
+		/* This is a hack to make sure that the p tag is not displayed as a block */
+		@apply inline;
+	}
+
+	ul > li {
 		@apply flex;
 	}
 	label {
